@@ -26,4 +26,11 @@ public class User {
     private String password;
     private LocalDateTime registrationTime;
     private boolean status;
+
+    public User(String email, String password, LocalDateTime registrationTime, boolean status) {
+        this.email = email;
+        this.password = password;
+        this.registrationTime = registrationTime;
+        this.status = status;
+    }
 }
