@@ -33,4 +33,5 @@ public class User {
         this.registrationTime = registrationTime;
         this.status = status;
     }
+
 }
