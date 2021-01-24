@@ -2,11 +2,13 @@ package com.example.pai_rest_api.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import sun.misc.Request;
 
 import javax.sql.DataSource;
 
@@ -21,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // żądania wymagające logowania
                 .antMatchers("/users/update/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
                 .antMatchers("/users/delete/**").hasAnyAuthority("ROLE_ADMIN")
-                .antMatchers("/example").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
+                .antMatchers(HttpMethod.GET,"/example").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
                 // ...
                 .anyRequest().permitAll()                   // wszystkie pozostałe żądania pozostają otwarte
                 .and().csrf().disable()                     // wył mechanizmy csrf
