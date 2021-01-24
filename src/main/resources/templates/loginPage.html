@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--informacja dla dokumentu że wykorzystujemy zestaw bibliotek thymeleaf-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p th:if="${email != null}" th:text="${email}"> logged user </p>
+<p th:if="${email == null}"> not logged </p>
+<h1> Login form </h1>
+
+<form th:action="@{'/login_process'}" method="post">
+    <!--type -> typ inputu-->
+    <!--name -> nazwa parametru-->
+    <input type="email" placeholder="'input your email'" name="email"><br>
+    <input type="password" placeholder="'input your password'" name="password"><br>
+    <input type="submit" value="login">
+</form>
+
+</body>
+</html>

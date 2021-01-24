@@ -2,6 +2,8 @@ package com.example.pai_rest_api.controller;
 
 
 import com.example.pai_rest_api.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +28,11 @@ public class RestAPIController {
             @RequestParam("email") String email,
             @RequestParam("password") String password
     ){
-        return new User(0, email, password, LocalDateTime.now(), false);
+        return new User(0,
+                email,
+                password,
+                LocalDateTime.now(),
+                true,
+                "ROLE_USER");
     }
 }

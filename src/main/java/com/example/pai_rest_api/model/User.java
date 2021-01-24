@@ -3,6 +3,7 @@ package com.example.pai_rest_api.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,12 +27,13 @@ public class User {
     private String password;
     private LocalDateTime registrationTime;
     private boolean status;
+    private String role;
 
-    public User(String email, String password, LocalDateTime registrationTime, boolean status) {
+    public User(String email, String password, LocalDateTime registrationTime, boolean status, String role) {
         this.email = email;
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
         this.registrationTime = registrationTime;
         this.status = status;
+        this.role = role;
     }
-
 }
